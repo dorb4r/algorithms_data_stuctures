@@ -7,14 +7,18 @@ class UnionFind:
         self.id = list(range(0, data_size))
 
     def is_connected(self, object_a: int, object_b: int):
-        return self.id[object_a] == self.id[object_a]
+        return self.__root(object_a) == self.__root(object_b)
 
     def union(self, object_a: int, object_b: int):
-        a_id = self.id[object_a]
-        b_id = self.id[object_b]
-        for index, cell in enumerate(self.id):
-            if cell == a_id:
-                self.id[index] = b_id
+        a_root = self.__root(object_a)
+        b_root = self.__root(object_b)
+        self.id[a_root] = b_root
+
+    def __root(self, index):
+        while index != self.id[index]:
+            index = self.id[index]
+
+        return index
 
 
 # def test():
