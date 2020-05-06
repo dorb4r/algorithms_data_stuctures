@@ -1,5 +1,16 @@
-def binary_search(input_list, target):
-    pass
+def binary_search(input_list, value):
+    low = 0
+    high = len(input_list) - 1
+
+    while low <= high:
+        mid = (high - low) / 2 + low
+
+        if input_list[mid] > value:
+            high = mid - 1
+        elif input_list[mid] < value:
+            low = mid + 1
+        else:
+            return value
 
 
 def main():
