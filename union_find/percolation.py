@@ -4,11 +4,15 @@ from sys import argv
 class Percolation:
     # // creates n-by-n grid, with all sites initially blocked
     def __init__(self, n: int):
-        self.grid = [[None for x in list(range(0, n))] for x in list(range(0, n))]
+        self.grid = [[-1 for x in list(range(0, n))] for x in list(range(0, n))]
+        self.open_site_counter = 0
 
     # // opens the site (row, col) if it is not open already
     def open(self, row: int, col: int):
         self.grid[row][col] = 1
+
+        if self.grid[row][col] > -1:
+            self.open_site_counter += 1
 
     # // is the site (row, col) open?
     def is_open(self, row: int, col: int):
@@ -16,29 +20,34 @@ class Percolation:
 
     # // is the site (row, col) full?
     def is_full(self, row: int, col: int):
-        pass
+        return self.grid[row][col] > -1
 
     # // returns the number of open sites
     def number_of_open_sites(self):
-        pass
+        return self.open_site_counter
 
     # // does the system percolate?
     def percolates(self):
         pass
 
-    def __root(self, index):
-        while index != self.id[index]:
-            index = self.id[index]
+    def __root(self, row, col):
+        while index != self.grid[index]:
+            index = self.grid[index]
 
         return index
 
 
+def print_matrix(grid):
+    print('\n'.join([''.join([f'{item}\t\t' for item in row]) for row in grid]))
+    print()
+
+
 # // test client (optional)
 def main(args):
-    percolation = Percolation(3)
-    print(percolation.grid)
+    percolation = Percolation(4)
+    print_matrix(percolation.grid)
     percolation.open(0, 0)
-    print(percolation.grid)
+    print_matrix(percolation.grid)
 
 
 if __name__ == "__main__":
