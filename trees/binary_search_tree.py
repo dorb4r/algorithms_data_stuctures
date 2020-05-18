@@ -8,13 +8,32 @@ class Node:
         self.right = None
 
 
-class BinarySearchTree:
+class BST:
     def __init__(self, first_value):
         self.root = Node(first_value)
 
+    def insert(self, value):
+        pass
+
+    def search(self, target):
+        return False
+
 
 def main(args):
-    pass
+    # Set up tree
+    tree = BST(4)
+
+    # Insert elements
+    tree.insert(2)
+    tree.insert(1)
+    tree.insert(3)
+    tree.insert(5)
+
+    # Check search
+    # Should be True
+    print(tree.search(4))
+    # Should be False
+    print(tree.search(6))
 
 
 if __name__ == "__main__":
