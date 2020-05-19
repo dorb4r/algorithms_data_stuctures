@@ -12,13 +12,25 @@ class BST:
     def __init__(self, first_value):
         self.root = Node(first_value)
 
+    def _insert(self, start, value):
+        if start.value < value:
+            if start.right is None:
+                start.right = Node(value)
+            else:
+                return self._insert(start.right, value)
+        else:
+            if start.left is None:
+                start.left = Node(value)
+            else:
+                return self._insert(start.left, value)
+
     def insert(self, value):
         """
         Insert a value in the correct place of the binary tree
         :param value:
         :return:
         """
-        pass
+        self._insert(self.root, value)
 
     def search(self, target):
         """
@@ -26,7 +38,18 @@ class BST:
         :param target:
         :return: True if the value is in the tree False if not
         """
-        return False
+        return self._search(self.root, target)
+
+    def _search(self, start, target):
+        if start:
+            if start.value > target:
+                return self._search(start.left, target)
+            elif start.value < target:
+                return self._search(start.right, target)
+            else:
+                return True
+        else:
+            return False
 
 
 def main(args):
