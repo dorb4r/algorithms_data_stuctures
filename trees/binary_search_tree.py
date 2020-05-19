@@ -13,9 +13,19 @@ class BST:
         self.root = Node(first_value)
 
     def insert(self, value):
+        """
+        Insert a value in the correct place of the binary tree
+        :param value:
+        :return:
+        """
         pass
 
     def search(self, target):
+        """
+
+        :param target:
+        :return: True if the value is in the tree False if not
+        """
         return False
 
 
