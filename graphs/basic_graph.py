@@ -56,7 +56,7 @@ class Graph(object):
         Each section in the list will store a list
         of tuples that looks like this:
         (To Node, Edge Value)"""
-
+        # TODO: Change this to work properly
         return [[() if edge else None for edge in node.edges] for node in self.nodes]
 
     def get_adjacency_matrix(self):
@@ -65,6 +65,8 @@ class Graph(object):
         column numbers represent to nodes.
         Store the edge values in each spot,
         and a 0 if no edge exists."""
+
+        # TODO: Create an officiant algorithm
         return [[edge.value or 0 for edge in node.edges] for node in self.nodes]
 
 
